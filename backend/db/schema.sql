@@ -40,7 +40,7 @@ CREATE Table businesses
     name varchar,
     address varchar,
     owner int REFERENCES users(id) ON DELETE CASCADE,
-    type varchar,
+    bizType varchar,
     offer varchar,
     images VARCHAR
 );
@@ -48,9 +48,9 @@ CREATE Table businesses
 CREATE Table reviews
 (
     id serial PRIMARY KEY,
-    user_id int REFERENCES users(id) ON DELETE CASCADE,
-    image VARCHAR,
-    business_id int REFERENCES businesses(id) ON DELETE CASCADE,
+    userid int REFERENCES users(id) ON DELETE CASCADE,
+    imageUrl VARCHAR,
+    businessid int REFERENCES businesses(id) ON DELETE CASCADE,
     rating int,
     body varchar,
     time_stamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP

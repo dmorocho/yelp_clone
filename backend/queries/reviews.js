@@ -1,21 +1,5 @@
 const db = require("../db/index");
 
-//create a review
-const addReview = async (req, res, next) => {
-  try {
-    let review = await db.one(
-      `INSERT INTO reviews (user_id,image,business_id,rating,body) VALUES (${user_id},'${image}',${business_id},'${rating}','${body}')`,
-      req.body
-    );
-    res.json({
-      message: "NEW REVIEW CREATED",
-      payload: review,
-    });
-  } catch (err) {
-    next(err);
-  }
-};
-
 //get all reviews
 const fetchAllreviews = async (req, res, next) => {
   try {
@@ -44,34 +28,24 @@ const getReview = async (req, res, next) => {
   }
 };
 
-//delete a user
+//delete a review
 const deleteReview = async (req, res, next) => {
   try {
-    const users = await db.any("SELECT * FROM reviews");
+    const deletedReview = await db.any(
+      "DELETE FROM reviews WHERE id = ${req.params.id} RETURNING *"
+    );
     res.json({
-      message: "Deleted USERS",
-      users,
+      message: "Deleted has been deleted",
+      deletedReview,
     });
   } catch (err) {
     next(err);
   }
 };
 
-const getUser = async (req, res, next) => {
-  try {
-    const users = await db.any("SELECT * FROM users where id LIKE ${id}");
-    res.json({
-      message: "ALL USERS",
-      users,
-    });
-  } catch (err) {
-    next(err);
-  }
-};
 module.exports = {
   fetchAllreviews,
   getReview,
-  addReview,
   // updatereview,
-  // deletereview,
+  deleteReview,
 };

@@ -4,6 +4,8 @@ const cors = require("cors");
 require("dotenv").config();
 const userRouter = require("./routes/users");
 const reviewsRouter = require("./routes/reviews");
+const businessesRouter = require("./routes/businesses/businesses");
+// const businessesRouter = require("./routes/businesses/reviews");
 
 const PORT = process.env.PORT;
 
@@ -13,9 +15,11 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+//All routes redirection
 app.use("/api/users", userRouter);
-
 app.use("/api/reviews", reviewsRouter);
+app.use("/api/businesses", businessesRouter);
+// app.use("/api/businesses/reviews/:id");
 
 app.use((err, req, res, next) => {
   console.log(err);
