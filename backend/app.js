@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 require("dotenv").config();
 const userRouter = require("./routes/users");
+const reviewsRouter = require("./routes/reviews");
 
 const PORT = process.env.PORT;
 
@@ -13,6 +14,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use("/api/users", userRouter);
+
+app.use("/api/reviews", reviewsRouter);
 
 app.use((err, req, res, next) => {
   console.log(err);

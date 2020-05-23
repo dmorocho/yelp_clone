@@ -19,13 +19,19 @@ CREATE Table users
     (50) NOT NULL,
     email VARCHAR
     (355) UNIQUE NOT NULL,
-    created_on TIMESTAMP ,
-    last_login TIMESTAMP
+    created_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
+    last_login TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 
 );
 
 
-
+-- CREATE TABLE subscriptions
+-- (
+--     id SERIAL PRIMARY KEY,
+--     submemmitID INT REFERENCES submemmits(id) ON DELETE CASCADE,
+--     userID INT REFERENCES users(id) ON DELETE CASCADE,
+--     CONSTRAINT UC_subscription UNIQUE (submemmitID, userID)
+-- );
 
 CREATE Table businesses
 (

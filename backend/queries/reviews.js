@@ -1,38 +1,55 @@
 const db = require("../db/index");
 
-//create a user
-const createUser = async (req, res, next) => {
+//create a review
+const addReview = async (req, res, next) => {
   try {
-    await db.none(
-      "INSERT INTO users (id,email) VALUES (${id}, ${email}",
+    let review = await db.one(
+      `INSERT INTO reviews (user_id,image,business_id,rating,body) VALUES (${user_id},'${image}',${business_id},'${rating}','${body}')`,
       req.body
     );
     res.json({
-      message: "NEW USER CREATED",
+      message: "NEW REVIEW CREATED",
+      payload: review,
     });
   } catch (err) {
     next(err);
   }
 };
 
-//get all users
-const featchAllUsers = async (req, res, next) => {
+//get all reviews
+const fetchAllreviews = async (req, res, next) => {
   try {
-    const users = await db.any("SELECT * FROM users");
+    const reviews = await db.any("SELECT * FROM reviews");
     res.json({
-      message: "ALL USERS",
-      users,
+      message: "ALL reviews",
+      payload: reviews,
     });
   } catch (err) {
     next(err);
   }
 };
-//delete a user
-const deleteUser = async (req, res, next) => {
+
+const getReview = async (req, res, next) => {
   try {
-    const users = await db.any("SELECT * FROM users");
+    const review = await db.any("SELECT * FROM reviews WHERE id =$1", [
+      req.params.id,
+    ]);
     res.json({
-      message: "ALL USERS",
+      message: " success",
+      payload: review,
+    });
+  } catch (error) {
+    console.log(err);
+    next(err);
+  }
+};
+
+//delete a user
+const deleteReview = async (req, res, next) => {
+  try {
+    const users = await db.any("SELECT * FROM reviews");
+    res.json({
+      message: "Deleted USERS",
       users,
     });
   } catch (err) {
@@ -51,4 +68,10 @@ const getUser = async (req, res, next) => {
     next(err);
   }
 };
-module.exports = { createUser, featchAllUsers, getUser, deleteUser };
+module.exports = {
+  fetchAllreviews,
+  getReview,
+  addReview,
+  // updatereview,
+  // deletereview,
+};
