@@ -3,7 +3,6 @@ const db = require("../db/index");
 //create a user
 const createUser = async (req, res, next) => {
   try {
-    // await db.none('INSERT INTO users (id, username, profile_pic, password,email) VALUES ('${req.body.username}','${req.body.profile_pic}', '${req.body.password}', '${req.body.email}');
     let newUser = await db.one(
       `INSERT INTO users ( username, profile_pic, password, email) VALUES ('${req.body.username}','${req.body.profile_pic}', '${req.body.password}', '${req.body.email}')RETURNING *`
     );
