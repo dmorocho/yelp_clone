@@ -1,0 +1,52 @@
+#heroImage {
+  background-image: url("../heroimg1.jpg");
+  padding-top: 30px;
+  height: 570px;
+  background-color: #333;
+  background-size: cover;
+  background-position: 50%;
+}
+
+#midHero {
+  /* background-color: pink; */
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+#logo {
+  text-align: center;
+}
+
+#logoImg {
+  width: 160px;
+  height: 80px;
+  padding: 0;
+  margin: 0 auto 48px;
+  background-repeat: no-repeat;
+}
+
+.inputDiv {
+  -webkit-box-flex: 1;
+  flex: 1;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0%;
+  display: block;
+  background-color: azure;
+  padding: 0%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+#findInput {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+#inputs {
+  display: flex;
+}

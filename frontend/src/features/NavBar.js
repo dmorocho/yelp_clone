@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const NavBar = () => {
   return (
     <nav>
-      <NavLink exact to={"/"}>
+      <NavLink exact to={"/home"}>
         Home
       </NavLink>
 
