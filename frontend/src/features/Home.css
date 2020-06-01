@@ -37,14 +37,14 @@
   background-color: white;
   padding: 0%;
   margin: 0;
-  padding: 0;
+  padding: 5px;
   /* border-radius: 10%; */
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
 }
 #findSpan {
-  border-radius: 10%;
+  /* border-radius: 10%; */
 }
 #findInput {
   background-color: transparent;
@@ -121,7 +121,8 @@ form {
   height: 10px;
   width: auto;
   filter: invert();
-  transform: scaleX(1);
+
+  transform: scaleX(-1);
 }
 li {
   padding: 5px;

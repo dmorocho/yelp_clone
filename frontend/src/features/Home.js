@@ -4,7 +4,8 @@ import img1 from "../heroimg1.jpg";
 import img2 from "../heroimg2.jpg";
 import img3 from "../heroimg3.jpg";
 import deliveryIcon from "../deliveryIcon.png";
-import searchimg from "../search.png";
+// import searchimg from "../search.png";
+import SearchBar from "./SearchBar";
 import "./Home.css";
 let num = [img1, img2, img3];
 
@@ -18,7 +19,8 @@ const Home = () => {
           <div id="logo">
             <img id="logoImg" src={img}></img>
           </div>
-          <form>
+          <SearchBar />
+          {/* <form>
             <div id="inputs">
               <div className="inputDiv">
                 <span id="findSpan"> Find</span>
@@ -37,12 +39,17 @@ const Home = () => {
                 <img id="searchImg" src={searchimg}></img>
               </button>
             </div>
-          </form>
+          </form> */}
           <ul id="sub">
             <li>
               <img id="deliveryIcon" src={deliveryIcon}></img>Delivery
             </li>
-            <li>Resturants</li>
+            <li>
+              <img id="deliveryIcon" src={deliveryIcon}></img>Resturants
+            </li>
+            <li>
+              <img id="deliveryIcon" src={deliveryIcon}></img>Bars
+            </li>
           </ul>
         </div>
       </div>

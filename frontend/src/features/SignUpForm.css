@@ -1,0 +1,23 @@
+form {
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  /* font-size: 18px; */
+}
+
+#dob-Div {
+  display: flex;
+  flex-direction: row;
+}
+input {
+  height: 22px;
+  border-radius: 5px;
+  /* border-style: solid; */
+  border: 1px solid;
+  border-color: rgb(202, 202, 202);
+  margin: 5px;
+  /* box-shadow: 0px; */
+}
+#signup_btn {
+  background-color: red;
+}
