@@ -18,6 +18,11 @@ input {
   margin: 5px;
   /* box-shadow: 0px; */
 }
+#email_input,
+#zipcode_input,
+#password_input {
+  width: 250px;
+}
 #signup_btn {
   background-color: red;
 }

@@ -5,12 +5,17 @@ const SignUpFrom = () => {
     <div>
       <form>
         <div id="name_Div">
-          <input id="firstname" placeholder=" First Name"></input>
-          <input id="lastname" placeholder=" Last Name"></input>
+          <input required id="firstname" placeholder=" First Name"></input>
+          <input required id="lastname" placeholder=" Last Name"></input>
         </div>
-        <input id="email" type="email" placeholder=" Email" />
-        <input id="password" type="password" placeholder=" Password" />
-        <input id="zipcode" placeholder=" Zipcode" />
+        <input required id="email_input" type="email" placeholder=" Email" />
+        <input
+          required
+          id="password_input"
+          type="password"
+          placeholder=" Password"
+        />
+        <input required id="zipcode_input" placeholder=" Zipcode" />
         <div>
           <p>Birthday</p>
           <p>optional</p>
