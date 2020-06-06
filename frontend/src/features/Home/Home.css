@@ -1,0 +1,142 @@
+#heroImage {
+  /* background-image: url("../heroimg1.jpg"); */
+  padding-top: 30px;
+  height: 570px;
+  background-color: #333;
+  background-size: cover;
+  background-position: 50%;
+  font-weight: bolder;
+}
+
+#midHero {
+  /* background-color: pink; */
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#logo {
+  text-align: center;
+}
+
+#logoImg {
+  width: 160px;
+  height: 80px;
+  padding: 0;
+  margin: 0 auto 48px;
+  background-repeat: no-repeat;
+}
+
+.inputDiv {
+  /* -webkit-box-flex: 1; */
+  flex: 1;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0%;
+  display: block;
+  background-color: white;
+  padding: 0%;
+  margin: 0;
+  padding: 0;
+  /* border-radius: 10%; */
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+#findSpan {
+  border-radius: 10%;
+}
+#findInput {
+  background-color: transparent;
+  border-color: transparent;
+  /* height: 20px; */
+  width: 75%;
+  /* padding: 11px; */
+  box-shadow: none;
+  border: none;
+  /* border-radius: 10%; */
+  /* border-radius: 5px 5px 5px 5px; */
+  background: #fff;
+}
+#findInput:focus {
+  outline: none;
+  border-color: none;
+}
+
+#inputs {
+  display: flex;
+  color: rgb(78, 77, 77);
+  /* border-radius: 20%; */
+  /* height: 20px; */
+  align-items: center;
+  width: 500px;
+}
+
+#nearInput {
+  background-color: transparent;
+  border-color: transparent;
+  /* height: 20px; */
+  width: auto;
+  /* padding: 11px; */
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+  background: #fff;
+}
+#nearInput:focus {
+  outline: none;
+  border-color: none;
+}
+#divider {
+  padding: 0%;
+  margin: 0%;
+}
+
+form {
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+#submit {
+  /* height: auto; */
+  background-color: red;
+  /* padding: 14px 20px 13px; */
+  /* padding: 10px; */
+  border-color: red;
+  padding: 8;
+  border-radius: 0 5px 5px 0;
+  font-size: 20px;
+}
+
+#searchImg {
+  height: 15px;
+  filter: invert();
+  padding: 5px;
+  margin: 0px;
+}
+
+#divider {
+  background-color: transparent;
+  border-color: transparent;
+}
+#sub {
+  /* text-align: justify; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+#deliveryIcon {
+  height: 10px;
+  width: auto;
+  filter: invert();
+  transform: scaleX(1);
+  transform: scaleX(-1);
+}
+li {
+  padding: 5px;
+}

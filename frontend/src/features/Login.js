@@ -11,7 +11,9 @@ const Login = () => {
     <div>
       <header>
         <div>
-          <img id="logo" src={img}></img>
+          <a href="/">
+            <img alt="main logo" id="logo" src={img}></img>
+          </a>
         </div>
       </header>
       <div id="mid_div">
@@ -24,14 +26,18 @@ const Login = () => {
           <LoginForm />
         </div>
         <div>
-          <img src={signup_image}></img>
+          <img alt="signup" src={signup_image}></img>
         </div>
       </div>
       <br></br>
       <hr></hr>
       <div>
         <footer>
-          <img id="footer_img" src={footer_cityscape}></img>
+          <img
+            alt="city landscape"
+            id="footer_img"
+            src={footer_cityscape}
+          ></img>
         </footer>
       </div>
     </div>

@@ -1,0 +1,8 @@
+footer {
+  position: relative;
+  text-align: center;
+}
+#footer_img {
+  width: 50%;
+  height: auto;
+}

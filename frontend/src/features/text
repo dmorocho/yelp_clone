@@ -13,6 +13,9 @@
   max-width: 960px;
   margin: 0 auto;
   padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #logo {
@@ -28,7 +31,7 @@
 }
 
 .inputDiv {
-  -webkit-box-flex: 1;
+  /* -webkit-box-flex: 1; */
   flex: 1;
   flex-grow: 1;
   flex-shrink: 1;
@@ -37,21 +40,21 @@
   background-color: white;
   padding: 0%;
   margin: 0;
-  padding: 5px;
+  padding: 0;
   /* border-radius: 10%; */
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
 }
 #findSpan {
-  /* border-radius: 10%; */
+  border-radius: 10%;
 }
 #findInput {
   background-color: transparent;
   border-color: transparent;
-  height: 20px;
+  /* height: 20px; */
   width: 75%;
-  padding: 11px;
+  /* padding: 11px; */
   box-shadow: none;
   border: none;
   /* border-radius: 10%; */
@@ -68,14 +71,16 @@
   color: rgb(78, 77, 77);
   /* border-radius: 20%; */
   /* height: 20px; */
+  align-items: center;
+  width: 500px;
 }
 
 #nearInput {
   background-color: transparent;
   border-color: transparent;
-  height: 20px;
+  /* height: 20px; */
   width: auto;
-  padding: 11px;
+  /* padding: 11px; */
   box-shadow: none;
   border: none;
   border-radius: 0;
@@ -91,19 +96,27 @@
 }
 
 form {
-  font-size: 18px;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 #submit {
-  height: auto;
+  /* height: auto; */
   background-color: red;
-  padding: 14px 20px 13px;
+  /* padding: 14px 20px 13px; */
+  /* padding: 10px; */
+  border-color: red;
+  padding: 8;
   border-radius: 0 5px 5px 0;
+  font-size: 20px;
 }
 
 #searchImg {
   height: 15px;
   filter: invert();
+  padding: 5px;
+  margin: 0px;
 }
 
 #divider {
@@ -121,7 +134,7 @@ form {
   height: 10px;
   width: auto;
   filter: invert();
-
+  transform: scaleX(1);
   transform: scaleX(-1);
 }
 li {
