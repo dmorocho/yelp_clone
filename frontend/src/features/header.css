@@ -1,0 +1,27 @@
+header {
+  background-color: rgb(225, 223, 223);
+  height: 75px;
+  /* position: relative; */
+  text-align: center;
+  display: flex;
+  border-bottom-color: grey;
+}
+
+#header_logo_img {
+  width: 60px;
+  height: auto;
+  margin: 20px;
+}
+
+.header_logo_div {
+  margin: 10px, 20px;
+}
+
+.header_search_div {
+  margin: 20px;
+  padding: 0%;
+}
+
+#header_search {
+  border-color: green;
+}

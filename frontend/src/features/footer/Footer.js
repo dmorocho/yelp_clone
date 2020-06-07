@@ -1,4 +1,4 @@
-import React from "./node_modules/react";
+import React from "react";
 import footer_cityscape from "../../footer_cityscape.png";
 import "./Footer.css";
 

@@ -114,6 +114,7 @@ form {
 
 #searchImg {
   height: 15px;
+  width: auto;
   filter: invert();
   padding: 5px;
   margin: 0px;

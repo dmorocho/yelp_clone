@@ -1,9 +1,23 @@
-import { createSlice } from "./node_modules/@reduxjs/toolkit";
-import axios from "./node_modules/axios";
+import { createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+export const searchBiz = (term) => async (dispatch) => {
+  try {
+    debugger;
+    const res = await axios.get(
+      "http://localhost:3001/api/businesses/search/",
+      {
+        search: term,
+      }
+    );
+    dispatch(receiveAllBiz(res.data.payload));
+  } catch (err) {
+    throw Error(err.message);
+  }
+};
 
 export const resturantSlice = createSlice({
   name: "resturants",
-  initialState: ["hi"],
+  initialState: [],
   reducers: {
     addResturant: {
       reducer: (state, action) => {
@@ -18,14 +32,6 @@ export const resturantSlice = createSlice({
   },
 });
 
-export const fetchAllBiz = () => async (dispatch) => {
-  try {
-    const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
-    dispatch(receiveAllBiz(res.data));
-  } catch (err) {
-    throw Error(err.message);
-  }
-};
 export const selectResturant = (state) => state.resturants;
 
 export const { addResturant, receiveAllBiz } = resturantSlice.actions;

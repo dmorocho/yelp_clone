@@ -5,7 +5,7 @@ import img1 from "../../heroimg1.jpg";
 import img2 from "../../heroimg2.jpg";
 import img3 from "../../heroimg3.jpg";
 import deliveryIcon from "../../deliveryIcon.png";
-// import Resturants from "../resturants/Resturants.js";
+import Resturants from "../resturants/Resturants";
 import SearchBar from "../SearchBar";
 import Footer from "../footer/Footer.js";
 import Category from "../category/Category";
@@ -68,7 +68,7 @@ const Home = () => {
       <div>
         <h3>Recent Activity</h3>
         <div>
-          {/* <Resturants /> */}
+          <Resturants />
           <h1>1</h1>
           <h1>1</h1>
           <h1>1</h1>

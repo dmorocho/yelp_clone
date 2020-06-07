@@ -37,7 +37,7 @@ const SearchBar = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     //action dispatch(search())
-    history.push(`/search/bar`);
+    history.push(`/search/`);
   };
   return (
     <form onSubmit={handleSubmit}>

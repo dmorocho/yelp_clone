@@ -1,13 +1,14 @@
-import React, { useEffect } from "./node_modules/react";
-import { useSelector, useDispatch } from "./node_modules/react-redux";
-import { selectResturant, fetchAllBiz } from "./resturantSlice";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { selectResturant, searchBiz } from "./resturantSlice";
 
 const Resturants = () => {
   const resturants = useSelector(selectResturant);
   const dispatch = useDispatch();
-  debugger;
+  let term = "seafood";
+
   useEffect(() => {
-    dispatch(fetchAllBiz());
+    dispatch(searchBiz(term));
   }, []);
 
   return <div>{/* <p>{resturants[0]}</p> */}</div>;
