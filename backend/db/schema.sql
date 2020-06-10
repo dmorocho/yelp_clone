@@ -1,7 +1,7 @@
-DROP DATABASE iF EXISTS yelp_db;
-CREATE DATABASE yelp_db;
+-- DROP DATABASE iF EXISTS yelp_db;
+-- CREATE DATABASE yelp_db;
 
-\c yelp_db;
+-- \c yelp_db;
 
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS post;

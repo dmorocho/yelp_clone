@@ -3,7 +3,7 @@ import searchimg from "../search.png";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { API_KEY } from "../secrets.js";
+import { API_KEY } from "../../secrets.js";
 
 const SearchBar = () => {
   const history = useHistory();

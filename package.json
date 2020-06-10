@@ -1,0 +1,21 @@
+{
+  "name": "yelp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd backend && npm install && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmorocho/yelp_clone.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dmorocho/yelp_clone/issues"
+  },
+  "homepage": "https://github.com/dmorocho/yelp_clone#readme"
+}

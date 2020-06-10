@@ -6,11 +6,13 @@ const {
   deleteUser,
 } = require("../queries/users");
 
+const { checkFirebaseToken } = require("../middleware/auth");
+
 //create a user
 users.post("/", createUser);
 
 // get all users
-users.get("/", featchAllUsers);
+users.get("/", checkFirebaseToken, featchAllUsers);
 //create a user
 users.get("/:id", getUser);
 // get all users
