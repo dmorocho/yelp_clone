@@ -33,11 +33,6 @@ const SignUp = () => {
       <br></br>
       <hr></hr>
       <Footer />
-      {/* <div>
-        <footer>
-          <img id="footer_img" src={footer_cityscape}></img>
-        </footer>
-      </div> */}
     </div>
   );
 };

@@ -1,18 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { apiURL } from "../../util/apiURL";
+
 export const searchBiz = (term) => async (dispatch) => {
+  const API = apiURL();
+
   try {
-    debugger;
-    const res = await axios.get(
-      "http://localhost:3001/api/businesses/search/",
-      {
-        search: term,
-      }
-    );
+    let res = await axios.get(`${API}/api/businesses`);
     dispatch(receiveAllBiz(res.data.payload));
-  } catch (err) {
-    throw Error(err.message);
-  }
+  } catch (error) {}
 };
 
 export const resturantSlice = createSlice({

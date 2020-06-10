@@ -4,7 +4,14 @@ const db = require("../db/index");
 const createUser = async (req, res, next) => {
   try {
     let newUser = await db.one(
-      `INSERT INTO users ( username, profile_pic, password, email) VALUES ('${req.body.username}','${req.body.profile_pic}', '${req.body.password}', '${req.body.email}')RETURNING *`
+      `INSERT INTO users ( id, email, first_name, last_name, DOB) VALUES ($1,$2,$3,$4,$5) RETURNING *`,
+      [
+        req.body.id,
+        req.body.email,
+        req.body.Firstname,
+        req.body.Lastname,
+        req.body.DOB,
+      ]
     );
     res.status(200).json({
       message: "NEW USER CREATED",

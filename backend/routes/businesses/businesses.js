@@ -10,9 +10,11 @@ const {
   addBusiness,
   updateBusiness,
   deleteBusiness,
+  searchTermBizreviews,
 } = require("../../queries/businesses/businesses");
 
 businesses.get("/", getAllBusinesses); //  Get all businesses
+businesses.post("/search/", searchTermBizreviews); //
 businesses.get("/:id", getBusiness); //Get single biz
 businesses.post("/", addBusiness);
 businesses.patch("/:id", updateBusiness); //Update single business

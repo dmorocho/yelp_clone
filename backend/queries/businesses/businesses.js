@@ -23,7 +23,7 @@ const getAllBusinesses = async (req, res, next) => {
 // //get single businesses based on id
 const getBusiness = async (req, res, next) => {
   try {
-    let business = await dataBase.one("SELECT * FROM businesses WHERE id =$1", [
+    let business = await db.one("SELECT * FROM businesses WHERE id= $1", [
       req.params.id,
     ]);
     res.status(200).json({
@@ -103,10 +103,32 @@ const deleteBusiness = async (req, res, next) => {
   }
 };
 
+const searchTermBizreviews = async (req, res, next) => {
+  try {
+    let businesses = await db.any(
+      `SELECT * FROM businesses LEFT JOIN reviews ON businesses.id = reviews.businessid WHERE UPPER(businesses.name) LIKE UPPER ('%${req.body.search}%') OR UPPER(businesses.categories) LIKE UPPER('%${req.body.search}%')`
+    );
+    res.status(200).json({
+      status: "success",
+      message: "retrieved all businesses",
+      payload: businesses,
+    });
+  } catch (err) {
+    res.status(555).json({
+      status: err,
+      message: "Get All businesses failed",
+      payload: null,
+    });
+
+    next(err);
+  }
+};
+
 module.exports = {
   getAllBusinesses,
   getBusiness,
   addBusiness,
   updateBusiness,
   deleteBusiness,
+  searchTermBizreviews,
 };

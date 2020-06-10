@@ -4,24 +4,19 @@ import "./SignUp.css";
 import img from "../yelpLogo.png";
 import Footer from "./footer/Footer";
 import SearchBar from "./SearchBar";
-
-// import footer_cityscape from "../footer_cityscape.png";
+import Resturants from "./resturants/Resturants";
+import "./search.css";
 
 const Search = () => {
   return (
     <div>
-      {/* <header>
-        <div>
-          <a href="/">
-            <img alt="main logo" id="logo" src={img}></img>
-          </a>
-        </div>
-        <SearchBar />
-      </header> */}
-      <Header />
+      <div className="search_header_div">
+        <Header className="search_header" />
+      </div>
 
-      <div id="mid_div"></div>
-      <br></br>
+      <div id="search_mid_div">
+        <Resturants />
+      </div>
 
       <Footer />
     </div>

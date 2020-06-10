@@ -17,6 +17,7 @@ let num = [img1, img2, img3];
 const Home = () => {
   let heroImage = num[Math.floor(Math.random() * 3)];
   console.log(num);
+
   return (
     <div>
       <div
@@ -25,18 +26,16 @@ const Home = () => {
         style={{ backgroundImage: `url(${heroImage})` }}
       >
         <div className="arrange_unit nowrap">
-          <ul className="header-nav hero-header_nav main-header_account">
-            <li className="header-nav_item u-space-r2" id="header-log-in">
-              <a
-                className="header-nav_link header-nav_link--log-in js-analytics-click"
-                href="/login"
-                data-analytics-label="login"
-              >
+          <ul className="header_ul">
+            <li className="header-id" id="header-log-in">
+              <a className="header_a_link" href="/login">
                 Log In
               </a>
             </li>
-            <li id="signup_link" data-analytics-label="signup">
-              <a href="/signup">Sign Up</a>
+            <li id="signup_link">
+              <a href="/signup" className="header_a_link">
+                Sign Up
+              </a>
             </li>
           </ul>
         </div>
@@ -65,17 +64,7 @@ const Home = () => {
           </ul>
         </div>
       </div>
-      <div>
-        <h3>Recent Activity</h3>
-        <div>
-          <Resturants />
-          <h1>1</h1>
-          <h1>1</h1>
-          <h1>1</h1>
-          <h1>1</h1>
-          <h1>1</h1>
-        </div>
-      </div>
+
       <Category />
       <hr></hr>
       <Footer />

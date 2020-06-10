@@ -1,0 +1,50 @@
+.rest_img {
+  height: 100px;
+  width: 100px;
+}
+
+.single_rest_div {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(225, 225, 225);
+  border-left: teal;
+  padding: 0;
+  margin: 0;
+  margin-left: 100px;
+
+  width: 80%;
+  background-color: white;
+
+  margin-bottom: 25px;
+}
+
+.main_resturant_div {
+  align-self: center;
+  margin-top: 100px;
+}
+
+.single_rest_div:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.about {
+  padding: 5px;
+}
+
+/* new */
+
+img {
+  width: 50%;
+}
+
+div.polaroid {
+  width: 80%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 25px;
+}
+
+div.container {
+  text-align: center;
+  padding: 10px 20px;
+}

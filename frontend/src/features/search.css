@@ -1,0 +1,12 @@
+.search_mid_div {
+  align-items: center;
+}
+
+.search_header_div {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  /* margin: 100px; */
+}

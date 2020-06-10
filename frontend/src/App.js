@@ -6,31 +6,36 @@ import Home from "./features/Home/Home";
 import SignUp from "./features/SignUp";
 import Search from "./features/search";
 import Login from "./features/Login";
+import Resturantpage from "./features/Resturantpage";
 import { Route, Switch } from "react-router-dom";
+import AuthProvider from "./providers/AuthContext";
+import { AuthRoute, ProtectedRoute } from "./util/routesUtil";
+
 function App() {
   return (
     <div className="App">
-      {/* <NavBar /> */}
-      {/* <Home /> */}
-      {/* <SignUp /> */}
-      {/* <Login /> */}
-      <Switch>
-        <Route path={"/login"}>
-          <Login />
-        </Route>
+      <AuthProvider>
+        <Switch>
+          <AuthRoute path={"/login"}>
+            <Login />
+          </AuthRoute>
 
-        <Route path={"/signup"}>
-          <SignUp />
-        </Route>
-        <Route path={"/search"}>
-          <Search />
-        </Route>
+          <AuthRoute path={"/signup"}>
+            <SignUp />
+          </AuthRoute>
+          <Route path={"/search"}>
+            <Search />
+          </Route>
+          <Route exact path={"/"}>
+            <Home />
+          </Route>
+          <Route exact path={"/Resturantpage/:id"}>
+            <Resturantpage />
+          </Route>
 
-        <Route exact path={"/"}>
-          <Home />
-        </Route>
-        <Route path="*" render={() => <div>Something Went Wrong</div>} />
-      </Switch>
+          <Route path="*" render={() => <div>Something Went Wrong</div>} />
+        </Switch>
+      </AuthProvider>
     </div>
   );
 }

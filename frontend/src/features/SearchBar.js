@@ -3,6 +3,7 @@ import searchimg from "../search.png";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { API_KEY } from "../secrets.js";
 
 const SearchBar = () => {
   const history = useHistory();
@@ -12,22 +13,22 @@ const SearchBar = () => {
 
   const getAddress = async () => {
     await navigator.geolocation;
+    debugger;
     await navigator.geolocation.getCurrentPosition(
       async (position) => {
         let lat = await position.coords.latitude;
         // await position.coords.latitude;
         let long = await position.coords.longitude;
         //await position.coords.longitude;
-
+        debugger;
         let res = await axios.get(
-          `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=AIzaSyBHVO_l4eUxjXZ7-12LjW0eJNXZWobjNtI`
+          `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=${API_KEY}`
         );
-
+        debugger;
         let data = res.data.results;
         let location = data[5].formatted_address.split(",");
         let loc = "" + location[0] + "," + location[1];
         setnear(loc);
-        debugger;
       },
       (error) => {
         console.log(error);
@@ -44,7 +45,7 @@ const SearchBar = () => {
       {/* <span>{loc}</span> */}
 
       <div id="inputs">
-        <div className="inputDiv">
+        <div className="inputDiv" id="findInput_div">
           <span id="findSpan"> Find</span>
           <input
             value={find}

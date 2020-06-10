@@ -1,27 +1,105 @@
-import React from "react";
+import React, { useState } from "react";
 import "./SignUpForm.css";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
+import { apiURL } from "../util/apiURL";
+import { signUp } from "../util/firebaseFunctions";
+
 const SignUpFrom = () => {
+  const [error, setError] = useState(null);
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [Firstname, setFirstname] = useState("");
+  const [Lastname, setLastname] = useState("");
+  const [Month, setMonth] = useState("");
+  const [Location, setLocation] = useState("");
+  const [Day, setDay] = useState("");
+  const [Year, setYear] = useState("");
+  const history = useHistory();
+  const API = apiURL();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let dateofbirth = `${Month}/${Day}/${Year}`;
+    try {
+      let res = await signUp(email, password);
+      debugger;
+      await axios.post(`${API}/api/users`, {
+        id: res.user.uid,
+        email,
+        Firstname,
+        Lastname,
+        DOB: dateofbirth,
+      });
+      history.push("/");
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div id="name_Div">
-          <input required id="firstname" placeholder=" First Name"></input>
-          <input required id="lastname" placeholder=" Last Name"></input>
+          <input
+            value={Firstname}
+            onChange={(e) => {
+              setFirstname(e.target.value);
+            }}
+            required
+            id="firstname"
+            placeholder=" First Name"
+          ></input>
+          <input
+            value={Lastname}
+            onChange={(e) => {
+              setLastname(e.target.value);
+            }}
+            required
+            id="lastname"
+            placeholder=" Last Name"
+          ></input>
         </div>
-        <input required id="email_input" type="email" placeholder=" Email" />
         <input
+          value={email}
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+          required
+          id="email_input"
+          type="email"
+          placeholder=" Email"
+        />
+        <input
+          value={password}
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
           required
           id="password_input"
           type="password"
           placeholder=" Password"
         />
-        <input required id="zipcode_input" placeholder=" Zipcode" />
+        <input
+          value={Location}
+          onChange={(e) => {
+            setLocation(e.target.value);
+          }}
+          required
+          id="zipcode_input"
+          placeholder=" Zipcode"
+        />
         <div>
-          <p>Birthday</p>
-          <p>optional</p>
+          <p>Birthday optional</p>
         </div>
         <div id="dob-Div">
-          <select id="dob_month">
+          <select
+            value={Month}
+            onChange={(e) => {
+              setMonth(e.target.value);
+            }}
+            id="dob_month"
+          >
             <option value="">Month</option>
             <option value="1">Jan</option>
             <option value="2">Feb</option>
@@ -36,7 +114,13 @@ const SignUpFrom = () => {
             <option value="11">Nov</option>
             <option value="12">Dec</option>
           </select>
-          <select id="dob_month">
+          <select
+            value={Day}
+            onChange={(e) => {
+              setDay(e.target.value);
+            }}
+            id="dob_day"
+          >
             <option value="">Day</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -70,7 +154,13 @@ const SignUpFrom = () => {
             <option value="30">30</option>
             <option value="31">31</option>
           </select>
-          <select id="dob_year">
+          <select
+            value={Year}
+            onChange={(e) => {
+              setYear(e.target.value);
+            }}
+            id="dob_year"
+          >
             <option value="">Year</option>
             <option value="2020">2020</option>
             <option value="2019">2019</option>
@@ -198,6 +288,7 @@ const SignUpFrom = () => {
           You also understand that Yelp may send marketing emails about Yelp’s
           products, services, and local events. You can unsubscribe at any time.
         </p>
+        {error ? <div style={{ color: "red" }}>{error}</div> : null}
         <input id="signup_btn" type="submit" value="Sign Up" />
       </form>
     </div>
