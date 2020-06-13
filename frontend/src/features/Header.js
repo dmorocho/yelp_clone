@@ -1,7 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
+import { useContext } from "react";
 import img from "../yelpLogo.png";
 import SearchBar from "./SearchBar";
 import "./header.css";
+// import userAuthButtons from "./userAuthButton";
 import { logout } from "../util/firebaseFunctions";
 
 import { AuthContext } from "../providers/AuthContext";

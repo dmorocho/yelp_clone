@@ -26,7 +26,9 @@ function App() {
             <Search />
           </Route>
           <Route exact path={"/"}>
+            {/* <AuthRoute exact path={"/"}> */}
             <Home />
+            {/* </AuthRoute> */}
           </Route>
           <Route exact path={"/Resturantpage/:id"}>
             <Resturantpage />
