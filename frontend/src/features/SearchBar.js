@@ -3,32 +3,40 @@ import searchimg from "../search.png";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { API_KEY } from "../../secrets.js";
+import { API_KEY } from "../secrets";
+import "./SearchBar.css";
 
 const SearchBar = () => {
   const history = useHistory();
   const [find, setfind] = useState("");
-  const [near, setnear] = useState("");
+  const [inputNear, setinputNear] = useState("");
+  const [showNear, setshowNear] = useState("none");
+  const [location, setlocation] = useState("");
+  const [latitude, setlatitude] = useState("none");
+  const [longitude, setlongitude] = useState("none");
+
   const dispatch = useDispatch();
 
   const getAddress = async () => {
+    setinputNear("Current Location");
+    setshowNear("none");
     await navigator.geolocation;
     debugger;
     await navigator.geolocation.getCurrentPosition(
       async (position) => {
-        let lat = await position.coords.latitude;
+        setlatitude(await position.coords.latitude);
         // await position.coords.latitude;
-        let long = await position.coords.longitude;
+        setlongitude(await position.coords.longitude);
         //await position.coords.longitude;
-        debugger;
+
         let res = await axios.get(
-          `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=${API_KEY}`
+          `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${API_KEY}`
         );
         debugger;
         let data = res.data.results;
         let location = data[5].formatted_address.split(",");
         let loc = "" + location[0] + "," + location[1];
-        setnear(loc);
+        setlocation(loc);
       },
       (error) => {
         console.log(error);
@@ -40,6 +48,12 @@ const SearchBar = () => {
     //action dispatch(search())
     history.push(`/search/`);
   };
+
+  const handleNearInput = () => {
+    showNear === "none" ? setshowNear("block") : setshowNear("none");
+    if (inputNear === "Current Location") setinputNear("");
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       {/* <span>{loc}</span> */}
@@ -54,18 +68,28 @@ const SearchBar = () => {
             onChange={(e) => setfind(e.target.value)}
           />
         </div>
-        <div className="inputDiv">
-          <span>| </span>
-          <span>Near</span>
-          <input
-            value={near}
-            id="nearInput"
-            placeholder=" Queens,NY"
-            onClick={getAddress}
-            onChange={(e) => setnear(e.target.value)}
-          />
+        <div>
+          <div className="inputDiv" id="nearInputDiv">
+            <span>| </span>
+            <span>Near</span>
+            <input
+              value={inputNear}
+              id="nearInput"
+              placeholder=" Queens,NY"
+              onChange={(e) => setinputNear(e.target.value)}
+              onClick={handleNearInput}
+              // onClick={getAddress}
+            />
+            {/* </div> */}
+            <div class="dropdown-content" style={{ display: showNear }}>
+              <ul>
+                <li role="option" onClick={getAddress}>
+                  Current Location
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-
         <button id="submit" type="submit" value="">
           <img id="searchImg" src={searchimg} alt="search"></img>
         </button>
