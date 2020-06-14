@@ -15,7 +15,7 @@ const LoginForm = () => {
       await login(email, password);
       history.push("/");
     } catch (error) {
-      setError(error);
+      setError(error.code.split("/")[1].replace("-", " ").replace("-", " "));
     }
   };
 

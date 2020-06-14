@@ -29,7 +29,19 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = firebase.auth().onAuthStateChanged(updateUser);
     return unsubscribe;
   }, []);
-  if (loading) return <img src={loadingImg}></img>;
+  if (loading)
+    return (
+      <div style={{ backgroundColor: "#751730" }}>
+        <img
+          style={{
+            display: "block",
+            marginLeft: " auto",
+            marginRight: "auto",
+          }}
+          src={loadingImg}
+        ></img>
+      </div>
+    );
   return (
     <AuthContext.Provider value={{ currentUser, token }}>
       {children}

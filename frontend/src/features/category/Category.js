@@ -14,7 +14,7 @@ const Category = () => {
   const mapcat = (imgs, tags) => {
     return imgs.map((img, i) => {
       return (
-        <a className="category_link" href={`/search/${tags[i]}`}>
+        <a className="category_link" href={`/search/${tags[i]}`} key={i}>
           <div className="singleCat_div">
             <img id="cat_img" alt={tags[i]} src={img}></img>
             <h3>{tags[i]}</h3>

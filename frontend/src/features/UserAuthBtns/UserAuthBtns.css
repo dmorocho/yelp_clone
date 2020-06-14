@@ -1,0 +1,36 @@
+.userAuthBtns-div {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  font-size: 18px;
+  height: fit-content;
+}
+
+#signup-btn {
+  color: white;
+  background-color: transparent;
+  border-color: white;
+  border-style: solid;
+}
+#signup-btn:hover {
+  border-color: white;
+  background-color: white;
+  color: grey;
+}
+
+#login-btn {
+  color: white;
+  border-color: transparent;
+  background-color: transparent;
+}
+
+#login-btn:hover {
+  text-decoration: underline;
+  text-decoration-color: white;
+}
+.auth-btn {
+  border-radius: 2px;
+  padding: 4px 8px;
+  /* border-style: none; */
+  font-weight: bold;
+}

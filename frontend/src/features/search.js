@@ -3,7 +3,7 @@ import Header from "./Header";
 import "./SignUp.css";
 import img from "../yelpLogo.png";
 import Footer from "./footer/Footer";
-import SearchBar from "./SearchBar";
+// import SearchBar from "./SearchBar";
 import Resturants from "./resturants/Resturants";
 import "./search.css";
 

@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
-import searchimg from "../search.png";
+import searchimg from "../../search.png";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { API_KEY } from "../secrets";
+import { API_KEY } from "../../secrets";
 import "./SearchBar.css";
 
 const SearchBar = () => {
@@ -18,16 +18,18 @@ const SearchBar = () => {
   const dispatch = useDispatch();
 
   const getAddress = async () => {
-    setinputNear("Current Location");
     setshowNear("none");
     await navigator.geolocation;
     debugger;
+
     await navigator.geolocation.getCurrentPosition(
       async (position) => {
+        setinputNear("Current Location");
         setlatitude(await position.coords.latitude);
         // await position.coords.latitude;
         setlongitude(await position.coords.longitude);
         //await position.coords.longitude;
+        // setinputNear("Current Location");
 
         let res = await axios.get(
           `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${API_KEY}`
@@ -81,7 +83,7 @@ const SearchBar = () => {
               // onClick={getAddress}
             />
             {/* </div> */}
-            <div class="dropdown-content" style={{ display: showNear }}>
+            <div className="dropdown-content" style={{ display: showNear }}>
               <ul>
                 <li role="option" onClick={getAddress}>
                   Current Location

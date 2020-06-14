@@ -20,8 +20,11 @@ const Login = () => {
         <div id="signup_div">
           <h3>Sign in to Yelp</h3>
           <p>
-            New to Yelp? Sign up By logging in, you agree to Yelp’s Terms of
-            Service and Privacy Policy.
+            New to Yelp? <a href="./signup">Sign up</a>
+          </p>
+          <p>
+            By logging in, you agree to Yelp’s Terms of Service and Privacy
+            Policy.
           </p>
           <LoginForm />
         </div>
