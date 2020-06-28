@@ -10,3 +10,25 @@
   width: 100%;
   /* margin: 100px; */
 }
+
+.mid_grid-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas: "results map";
+}
+
+.results_search_mid_div {
+  grid-area: results;
+}
+
+.map_results_search_mid_div {
+  grid-area: map;
+}
+
+.map_div {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 100px;
+}

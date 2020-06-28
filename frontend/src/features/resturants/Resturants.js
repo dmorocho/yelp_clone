@@ -1,45 +1,68 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectResturant, searchBiz } from "./resturantSlice";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
+
 import "./resturants.css";
 
 const Resturants = () => {
   const Searches = useSelector(selectResturant);
   const dispatch = useDispatch();
   const history = useHistory();
-
+  let { term } = useParams();
   const handleClick = (e) => {
-    debugger;
     history.push(`/Resturantpage/${e.target.id}`);
   };
 
-  useEffect(() => {
-    const getbiz = async () => {
-      dispatch(searchBiz());
-    };
-    getbiz();
-  }, []);
+  // useEffect(() => {
+  //   const getbiz = async () => {
+  //     dispatch(searchBiz(term));
+  //   };
+  //   getbiz();
+  // }, []);
 
   let displaySearches = Searches.map((rest, i) => {
+    debugger;
     return (
-      <div className="single_rest_div" onClick={handleClick}>
-        <div className="rest_image_div">
-          <img id={rest.id} src={rest.images} className="rest_img"></img>
-        </div>
-        <div className="about">
-          <h1>
-            <bold>
-              {i + 1}. {rest.name}
-            </bold>
-          </h1>
-          <h3>{rest.categories}</h3>
-          <div className="info">
-            <h3>{rest.phone_number}</h3>
-            <h3>{rest.address}</h3>
+      <a
+        id="resTag"
+        href={`/Resturantpage/${rest.bizid[0]}`}
+        key={rest.bizid[0]}
+      >
+        <div
+          className="single_rest_div"
+          // onClick={handleClick}
+          id={rest.id}
+          key={rest.id}
+        >
+          <div className="rest_image_div">
+            <img
+              id={rest.bizid[0]}
+              src={rest.images[0]}
+              className="rest_img"
+            ></img>
+          </div>
+          <div className="about">
+            <h1>
+              <bold>
+                {i + 1}. {rest.name}
+              </bold>
+            </h1>
+            <h3>{rest.categories[0]}</h3>
+            <div className="info">
+              <h3>{rest.phone_number[0]}</h3>
+              <h3>{rest.address[0]}</h3>
+              <div class="rating" data-rating={rest.rating}>
+                <i class="star-1">★</i>
+                <i class="star-2">★</i>
+                <i class="star-3">★</i>
+                <i class="star-4">★</i>
+                <i class="star-5">★</i>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </a>
     );
   });
 

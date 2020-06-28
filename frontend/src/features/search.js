@@ -1,4 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useHistory, useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  selectResturant,
+  searchBiz,
+} from "../features/resturants/resturantSlice";
+
 import Header from "./Header";
 import "./SignUp.css";
 import img from "../yelpLogo.png";
@@ -8,14 +15,33 @@ import Resturants from "./resturants/Resturants";
 import "./search.css";
 
 const Search = () => {
+  const dispatch = useDispatch();
+  let { term } = useParams();
+
+  useEffect(() => {
+    const getbiz = async () => {
+      dispatch(searchBiz(term));
+    };
+    getbiz();
+  }, []);
   return (
     <div>
       <div className="search_header_div">
         <Header className="search_header" />
       </div>
 
-      <div id="search_mid_div">
-        <Resturants />
+      <div className="mid_grid-container">
+        <div className="results_search_mid_div">
+          <Resturants />
+        </div>
+        <div className="map_results_search_mid_div">
+          <iframe
+            className="map_div"
+            src="https://www.google.com/maps/d/embed?mid=1D5MOsIaiJJLp7VvQSXdb2dPSOrrKc2V9&hl=en"
+            width="400"
+            height="400"
+          ></iframe>
+        </div>
       </div>
 
       <Footer />

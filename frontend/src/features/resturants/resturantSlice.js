@@ -6,7 +6,9 @@ export const searchBiz = (term) => async (dispatch) => {
   const API = apiURL();
 
   try {
-    let res = await axios.get(`${API}/api/businesses`);
+    let res = await axios.post(`${API}/api/businesses/search/`, {
+      search: term,
+    });
     dispatch(receiveAllBiz(res.data.payload));
   } catch (error) {}
 };

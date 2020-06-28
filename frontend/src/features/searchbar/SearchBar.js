@@ -1,30 +1,40 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import searchimg from "../../search.png";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { API_KEY } from "../../secrets";
+import { selectResturant, searchBiz } from "../resturants/resturantSlice";
+import { apiURL } from "../../util/apiURL";
+
 import "./SearchBar.css";
 
 const SearchBar = () => {
+  const API = apiURL();
   const history = useHistory();
+  const dispatch = useDispatch();
   const [find, setfind] = useState("");
   const [inputNear, setinputNear] = useState("");
   const [showNear, setshowNear] = useState("none");
   const [location, setlocation] = useState("");
   const [latitude, setlatitude] = useState("none");
   const [longitude, setlongitude] = useState("none");
+  const [liveSearchRes, setliveSeachRes] = useState("");
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  const searchbiz = async () => {
+    dispatch(searchBiz(find));
+  };
+  // searchbiz();
+  // }, []);
 
   const getAddress = async () => {
     setshowNear("none");
     await navigator.geolocation;
-    debugger;
 
     await navigator.geolocation.getCurrentPosition(
       async (position) => {
-        setinputNear("Current Location");
         setlatitude(await position.coords.latitude);
         // await position.coords.latitude;
         setlongitude(await position.coords.longitude);
@@ -34,7 +44,8 @@ const SearchBar = () => {
         let res = await axios.get(
           `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${API_KEY}`
         );
-        debugger;
+        setinputNear("Current Location");
+
         let data = res.data.results;
         let location = data[5].formatted_address.split(",");
         let loc = "" + location[0] + "," + location[1];
@@ -48,7 +59,8 @@ const SearchBar = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     //action dispatch(search())
-    history.push(`/search/`);
+    dispatch(searchBiz(find));
+    history.push(`/search/${find}`);
   };
 
   const handleNearInput = () => {
@@ -56,19 +68,41 @@ const SearchBar = () => {
     if (inputNear === "Current Location") setinputNear("");
   };
 
+  const liveSearch = async () => {
+    let res = await axios.get(`${API}/api/businesses/search/${find}`);
+    setliveSeachRes(res.data.payload);
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       {/* <span>{loc}</span> */}
-
+      {/* id="findInput_div" */}
       <div id="inputs">
-        <div className="inputDiv" id="findInput_div">
+        <div className="inputDiv" id="nearInputDiv">
           <span id="findSpan"> Find</span>
           <input
             value={find}
             id="findInput"
             placeholder="accountants, delivery, takeout..."
             onChange={(e) => setfind(e.target.value)}
+            onKeyUp={liveSearch}
           />
+          {/* </div> */}
+          <div className="dropdown-content">
+            <ul>
+              {liveSearchRes
+                ? liveSearchRes.map((biz) => {
+                    return (
+                      <a href={`/Resturantpage/${biz.id}`}>
+                        <li role="option" id={biz.id} key={biz.id}>
+                          {biz.name}
+                        </li>
+                      </a>
+                    );
+                  })
+                : null}
+            </ul>
+          </div>
         </div>
         <div>
           <div className="inputDiv" id="nearInputDiv">
@@ -82,7 +116,6 @@ const SearchBar = () => {
               onClick={handleNearInput}
               // onClick={getAddress}
             />
-            {/* </div> */}
             <div className="dropdown-content" style={{ display: showNear }}>
               <ul>
                 <li role="option" onClick={getAddress}>

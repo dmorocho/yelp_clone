@@ -23,7 +23,7 @@ const SignUpFrom = () => {
     let dateofbirth = `${Month}/${Day}/${Year}`;
     try {
       let res = await signUp(email, password);
-      debugger;
+
       await axios.post(`${API}/api/users`, {
         id: res.user.uid,
         email,

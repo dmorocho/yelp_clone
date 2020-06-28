@@ -22,7 +22,7 @@ function App() {
           <AuthRoute path={"/signup"}>
             <SignUp />
           </AuthRoute>
-          <Route path={"/search"}>
+          <Route path={"/search/:term"}>
             <Search />
           </Route>
           <Route exact path={"/"}>
