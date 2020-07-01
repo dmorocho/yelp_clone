@@ -105,8 +105,54 @@ const deleteBusiness = async (req, res, next) => {
 
 const searchTermBizreviews = async (req, res, next) => {
   try {
+    // ("%${req.body.search}%");
     let businesses = await db.any(
-      `SELECT * FROM businesses LEFT JOIN reviews ON businesses.id = reviews.businessid WHERE UPPER(businesses.name) LIKE UPPER ('%${req.body.search}%') OR UPPER(businesses.categories) LIKE UPPER('%${req.body.search}%')`
+      `SELECT DISTINCT name,
+      AVG(rating) AS rating, 
+      ARRAY_AGG(businesses.id) AS bizid,
+      ARRAY_AGG(businesses.images) AS images,
+      ARRAY_AGG(businesses.address) AS address,
+      ARRAY_AGG(businesses.phone_number) AS phone_number,
+      ARRAY_AGG(businesses.categories) AS categories,
+      ARRAY_AGG(businesses.url) AS url,
+      ARRAY_AGG(businesses.latitude) AS latitude,
+      ARRAY_AGG(businesses.longitude) AS longitude,
+      ARRAY_AGG(businesses.budget) AS budget
+       FROM businesses
+      LEFT JOIN reviews ON reviews.businessid = businesses.id  
+      /*WHERE UPPER(businesses.name) LIKE UPPER('%food%') 
+      OR UPPER(businesses.categories) LIKE UPPER('%food%')*/
+      /*WHERE latitude BETWEEN  (40.7365401 - .002) AND (40.7365401 + .002)
+      AND longitude BETWEEN  (-73.9192648 - .002) AND (-73.9192648 + .002)*/
+      WHERE UPPER(businesses.name) LIKE UPPER('%${req.body.search}%') 
+      OR UPPER(businesses.categories) LIKE UPPER('%${req.body.search}%')
+      GROUP BY businesses.name`
+    );
+    res.status(200).json({
+      status: "success",
+      message: "retrieved all businesses",
+      payload: businesses,
+    });
+  } catch (err) {
+    res.status(555).json({
+      status: err,
+      message: "Get All businesses failed",
+      payload: null,
+    });
+
+    next(err);
+  }
+};
+
+const quickSearchTermBizreviews = async (req, res, next) => {
+  try {
+    // ("%${req.body.search}%");
+    let businesses = await db.any(
+      `SELECT DISTINCT name, id
+      FROM businesses
+      WHERE UPPER(businesses.name) LIKE UPPER('%${req.params.search}%') 
+      OR UPPER(businesses.categories) LIKE UPPER('%${req.params.search}%')
+      LIMIT 5`
     );
     res.status(200).json({
       status: "success",
@@ -131,4 +177,5 @@ module.exports = {
   updateBusiness,
   deleteBusiness,
   searchTermBizreviews,
+  quickSearchTermBizreviews,
 };
