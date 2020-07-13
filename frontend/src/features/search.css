@@ -8,7 +8,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  /* margin: 100px; */
+  margin: 100px;
 }
 
 .mid_grid-container {
@@ -32,3 +32,37 @@
   position: sticky;
   top: 100px;
 }
+
+/* grid start */
+/* 
+.grid-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 0.5fr 2fr 0.5fr;
+  gap: 1px 1px;
+  grid-template-areas: "navbar navbar" "search map" "footer footer";
+}
+
+.search_header_div {
+  grid-area: navbar;
+}
+
+.footer_div {
+  grid-area: footer;
+}
+
+.results_search_mid_div {
+  grid-area: search;
+}
+
+.map_results_search_mid_div {
+  grid-area: map;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 100px;
+}
+.map_div {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 100px;
+} */

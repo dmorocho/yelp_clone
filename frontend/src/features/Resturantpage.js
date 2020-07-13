@@ -1,22 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import { apiURL } from "../util/apiURL";
 
 import axios from "axios";
-import "./SignUp.css";
+import "./Signup/SignUp.css";
 import img from "../yelpLogo.png";
 import Footer from "./footer/Footer";
 
 const Resturantpage = () => {
+  const API = apiURL();
+  const history = useHistory();
   let { id } = useParams();
   let search = "seafood";
   let budgetSign = ["$", "$$", "$$$", "$$$$"];
   const [currentRes, setCurrentRes] = useState("");
+
   useEffect(() => {
     const getbiz = async () => {
       try {
         let res = await axios({
           method: "get",
-          url: `http://localhost:3001/api/businesses/${id}`,
+          url: `${API}/api/businesses/${id}`,
         });
 
         setCurrentRes(res.data.payload);
@@ -28,6 +32,12 @@ const Resturantpage = () => {
     getbiz();
   }, []);
 
+  const fetchHours = () => {
+    try {
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div>
       <header>
@@ -56,7 +66,7 @@ const Resturantpage = () => {
                 <h3>{currentRes.address}</h3>
                 <h3>{currentRes.url}</h3>
                 <h3>{budgetSign[Number(currentRes.budget)]}</h3>
-                <div class="rating" data-rating={currentRes.rating}>
+                <div className="rating" data-rating={currentRes.rating}>
                   <i class="star-1">★</i>
                   <i class="star-2">★</i>
                   <i class="star-3">★</i>
@@ -65,7 +75,14 @@ const Resturantpage = () => {
                 </div>
               </div>
             </div>
-            <button onClick={`/Resturantpage/${2}`}>Leave a review</button>
+            <button
+              id={currentRes.id}
+              onClick={(e) => {
+                history.push(`/review/${e.target.id}`);
+              }}
+            >
+              Leave a review
+            </button>
           </div>
         </div>
       ) : null}

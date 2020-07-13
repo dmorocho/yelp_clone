@@ -1,7 +1,7 @@
 import React from "react";
 import LoginForm from "./LoginForm";
 import signup_image from "../signup_image.png";
-import "./SignUp.css";
+import "./Signup/SignUp.css";
 import img from "../yelpLogo.png";
 
 import footer_cityscape from "../footer_cityscape.png";

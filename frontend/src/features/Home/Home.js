@@ -5,16 +5,13 @@ import img1 from "../../heroimg1.jpg";
 import img2 from "../../heroimg2.jpg";
 import img3 from "../../heroimg3.jpg";
 import deliveryIcon from "../../deliveryIcon.png";
-// import Resturants from "../resturants/Resturants";
+
 import SearchBar from "../searchbar/SearchBar";
 import Footer from "../footer/Footer.js";
 import Category from "../category/Category";
 import UserAuthBtns from "../UserAuthBtns/UserAuthBtns";
-// import searchimg from "../../search.png";
-// import { logout } from "../../util/firebaseFunctions";
 
 import { AuthContext } from "../../providers/AuthContext";
-// import { NavLink } from "react-router-dom";
 
 import "./Home.css";
 

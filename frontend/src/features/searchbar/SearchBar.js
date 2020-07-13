@@ -6,6 +6,11 @@ import { useDispatch } from "react-redux";
 import { API_KEY } from "../../secrets";
 import { selectResturant, searchBiz } from "../resturants/resturantSlice";
 import { apiURL } from "../../util/apiURL";
+//google api
+import PlacesAutocomplete, {
+  geocodebyAddress,
+  getLatLng,
+} from "react-places-autocomplete";
 
 import "./SearchBar.css";
 
@@ -15,6 +20,7 @@ const SearchBar = () => {
   const dispatch = useDispatch();
   const [find, setfind] = useState("");
   const [inputNear, setinputNear] = useState("");
+  const [address, setAddress] = useState("");
   const [showNear, setshowNear] = useState("none");
   const [location, setlocation] = useState("");
   const [latitude, setlatitude] = useState("none");
@@ -72,6 +78,7 @@ const SearchBar = () => {
     let res = await axios.get(`${API}/api/businesses/search/${find}`);
     setliveSeachRes(res.data.payload);
   };
+  const handleSelect = () => {};
 
   return (
     <form onSubmit={handleSubmit}>
@@ -108,6 +115,41 @@ const SearchBar = () => {
           <div className="inputDiv" id="nearInputDiv">
             <span>| </span>
             <span>Near</span>
+            {/* <PlacesAutocomplete
+              value={address}
+              onChange={setAddress}
+              onSelect={handleSelect}
+            >
+              {({
+                getInputProps,
+                suggestions,
+                getSuggestionItemProps,
+                loading,
+              }) => (
+                <div> */}
+            {/* <p>Latitude: {coordinates.lat}</p>
+                  <p>Longitude: {coordinates.lng}</p> */}
+            {/* 
+                  <input {...getInputProps({ placeholder: "Type address" })} />
+
+                  <div>
+                    {loading ? <div>...loading</div> : null}
+
+                    {suggestions.map((suggestion) => {
+                      const style = {
+                        backgroundColor: suggestion.active ? "#41b6e6" : "#fff",
+                      };
+
+                      return (
+                        <div {...getSuggestionItemProps(suggestion, { style })}>
+                          {suggestion.description}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </PlacesAutocomplete> */}
             <input
               value={inputNear}
               id="nearInput"

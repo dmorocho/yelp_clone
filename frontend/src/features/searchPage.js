@@ -1,17 +1,14 @@
 import React, { useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  selectResturant,
-  searchBiz,
-} from "../features/resturants/resturantSlice";
+import { selectResturant, searchBiz } from "./resturants/resturantSlice";
 
 import Header from "./Header";
-import "./SignUp.css";
+import "./Signup/SignUp.css";
 import img from "../yelpLogo.png";
 import Footer from "./footer/Footer";
 // import SearchBar from "./SearchBar";
-import Resturants from "./resturants/Resturants";
+import Resturants from "./resturants/ResturantsCard";
 import "./search.css";
 
 const Search = () => {
@@ -25,10 +22,10 @@ const Search = () => {
     getbiz();
   }, []);
   return (
-    <div>
-      <div className="search_header_div">
-        <Header className="search_header" />
-      </div>
+    <div className="grid-container">
+      {/* <div className="search_header_div"> */}
+      <Header className="search_header" />
+      {/* </div> */}
 
       <div className="mid_grid-container">
         <div className="results_search_mid_div">
@@ -43,8 +40,9 @@ const Search = () => {
           ></iframe>
         </div>
       </div>
-
-      <Footer />
+      <div className="footer_div">
+        <Footer />
+      </div>
     </div>
   );
 };

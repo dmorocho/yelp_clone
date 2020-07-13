@@ -2,10 +2,12 @@ import React from "react";
 import "./App.css";
 import NavBar from "./features/NavBar";
 import Home from "./features/Home/Home";
-import SignUp from "./features/SignUp";
-import Search from "./features/search";
+import SignUp from "./features//Signup/SignUp";
+import Search from "./features/searchPage";
 import Login from "./features/Login";
 import Resturantpage from "./features/Resturantpage";
+import Reviewpage from "./features/review/ReviewPage";
+
 import { Route, Switch } from "react-router-dom";
 import AuthProvider from "./providers/AuthContext";
 import { AuthRoute, ProtectedRoute } from "./util/routesUtil";
@@ -33,7 +35,9 @@ function App() {
           <Route exact path={"/Resturantpage/:id"}>
             <Resturantpage />
           </Route>
-
+          <Route exact path={"/Review/:id"}>
+            <Reviewpage />
+          </Route>
           <Route path="*" render={() => <div>Something Went Wrong</div>} />
         </Switch>
       </AuthProvider>

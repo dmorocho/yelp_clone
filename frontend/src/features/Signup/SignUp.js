@@ -1,9 +1,9 @@
 import React from "react";
 import SignUpFrom from "./SignUpForm";
-import signup_image from "../signup_image.png";
+import signup_image from "../../signup_image.png";
 import "./SignUp.css";
-import img from "../yelpLogo.png";
-import Footer from "./footer/Footer";
+import img from "../../yelpLogo.png";
+import Footer from "../footer/Footer";
 
 // import footer_cityscape from "../footer_cityscape.png";
 
