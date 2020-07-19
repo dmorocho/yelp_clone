@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/dmorocho/yelp_clone/issues"
   },
-  "homepage": "https://github.com/dmorocho/yelp_clone#readme"
+  "homepage": "https://github.com/dmorocho/yelp_clone#readme",
+  "dependencies": {
+    "react-places-autocomplete": "^7.3.0"
+  }
 }
