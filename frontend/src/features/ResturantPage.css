@@ -1,0 +1,57 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1px 1px;
+}
+
+.PHOTOS {
+  height: 100px;
+  grid-area: 1 / 1 / 2 / 5;
+}
+
+.BIZINFO {
+  grid-area: 2 / 1 / 3 / 4;
+}
+
+.INFO-SNIPPIT {
+  grid-area: 2 / 4 / 3 / 5;
+}
+
+.FOOTER {
+  grid-area: 3 / 1 / 4 / 5;
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+#main {
+  display: flex;
+  min-height: calc(100vh - 40vh);
+}
+#main > #resinfo_div {
+  flex: 1;
+}
+
+#main > aside {
+  flex: 0 0 20vw;
+  background: beige;
+}
+#main > nav {
+  order: -1;
+}
+#respic_di,
+footer,
+#resinfo_div,
+nav,
+aside {
+  padding: 1em;
+}
+#respic_div,
+footer {
+  background: yellowgreen;
+  height: 20vh;
+}

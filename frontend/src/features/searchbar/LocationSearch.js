@@ -3,18 +3,29 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from "react-places-autocomplete";
-import PersonPinCircleOutlinedIcon from "@material-ui/icons/PersonPinCircleOutlined";
-
 import { makeStyles } from "@material-ui/core/styles";
-import AddLocationIcon from "@material-ui/icons/AddLocation";
+import IconButton from "@material-ui/core/IconButton";
+import PersonPinCircleOutlinedIcon from "@material-ui/icons/PersonPinCircleOutlined";
+import { Typography, ListItem } from "@material-ui/core";
+import InputBase from "@material-ui/core/InputBase";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
-import { TextField, ListItem, IconButton } from "@material-ui/core";
-import InputAdornment from "@material-ui/core/InputAdornment";
-// import LocationOnIcon from "@material-ui/icons/LocationOn";
-
 const useStyles = makeStyles((theme) => ({
-  margin: {
-    margin: theme.spacing(1),
+  root: {
+    padding: "2px 4px",
+    display: "flex",
+    alignItems: "center",
+    width: 400,
+  },
+  input: {
+    marginLeft: theme.spacing(1),
+    flex: 1,
+  },
+  iconButton: {
+    padding: 10,
+  },
+  divider: {
+    height: 28,
+    margin: 4,
   },
 }));
 
@@ -42,6 +53,7 @@ const LocationSearch = ({ setLatitude, setLongitude }) => {
         setLatitude(position.coords.latitude);
         setLongitude(position.coords.longitude);
       });
+      setAddress("My Location");
     } catch (error) {
       console.log(error);
     }
@@ -56,6 +68,7 @@ const LocationSearch = ({ setLatitude, setLongitude }) => {
     setLongitude(latLng.lng);
   };
   console.log(select);
+
   return (
     <>
       <PlacesAutocomplete
@@ -64,37 +77,20 @@ const LocationSearch = ({ setLatitude, setLongitude }) => {
         onSelect={handleSelect}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-          <div id="locationSearchDiv">
-            <TextField
-              className="searchTerm"
-              // placeholder="location"
-              id="outlined-basic"
-              // label="location"
-              variant="outlined"
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <AddLocationIcon />
-                  </InputAdornment>
-                ),
-              }}
+          <div id="searchDiv">
+            <InputBase
+              className={classes.input}
+              placeholder="location"
               {...getInputProps({ placeholder: "Type address" })}
               onFocus={handleFocus}
             />
 
-            {/* <input
-              {...getInputProps({ placeholder: "Type address" })}
-              onFocus={handleFocus}
-            /> */}
-            <div id="locSearchResults">
-              {select === true ? (
-                <li onClick={handleClick}>use current location</li>
-              ) : null}
+            <div id="searchResultsDiv">
               {loading ? <div>...loading</div> : null}
 
               {suggestions.map((suggestion) => {
                 const style = {
-                  backgroundColor: suggestion.active ? "#41b6e6" : "#fff",
+                  backgroundColor: suggestion.active ? "#068360" : "#fff",
                 };
 
                 return (

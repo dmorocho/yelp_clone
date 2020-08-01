@@ -32,12 +32,12 @@ const Search = () => {
           <Resturants />
         </div>
         <div className="map_results_search_mid_div">
-          <iframe
+          {/* <iframe
             className="map_div"
             src="https://www.google.com/maps/d/embed?mid=1D5MOsIaiJJLp7VvQSXdb2dPSOrrKc2V9&hl=en"
             width="400"
             height="400"
-          ></iframe>
+          ></iframe> */}
         </div>
       </div>
       <div className="footer_div">
