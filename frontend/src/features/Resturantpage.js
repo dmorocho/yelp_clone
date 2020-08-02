@@ -6,7 +6,7 @@ import axios from "axios";
 import "./ResturantPage.css";
 import img from "../yelpLogo.png";
 import Footer from "./footer/Footer";
-import Header from "./Header";
+import Header from "./Header/Header";
 
 const Resturantpage = () => {
   const API = apiURL();

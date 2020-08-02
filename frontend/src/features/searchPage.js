@@ -3,7 +3,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { selectResturant, searchBiz } from "./resturants/resturantSlice";
 
-import Header from "./Header";
+import Header from "./Header/Header";
 import "./Signup/SignUp.css";
 import img from "../yelpLogo.png";
 import Footer from "./footer/Footer";

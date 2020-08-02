@@ -1,0 +1,5 @@
+#filter_form {
+  width: fit-content;
+  font-size: 12px;
+  display: "flex";
+}

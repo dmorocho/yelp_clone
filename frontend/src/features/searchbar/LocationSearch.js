@@ -9,6 +9,9 @@ import PersonPinCircleOutlinedIcon from "@material-ui/icons/PersonPinCircleOutli
 import { Typography, ListItem } from "@material-ui/core";
 import InputBase from "@material-ui/core/InputBase";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
+import { useDispatch } from "react-redux";
+import { updateLong, updateLat } from "./locationSlice";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: "2px 4px",
@@ -29,9 +32,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const LocationSearch = ({ setLatitude, setLongitude }) => {
+const LocationSearch = () => {
   const classes = useStyles();
-
+  const dispatch = useDispatch();
   const [address, setAddress] = useState("");
   const [select, setSelect] = useState(false);
 
@@ -47,25 +50,27 @@ const LocationSearch = ({ setLatitude, setLongitude }) => {
     setSelect(false);
   };
   const handleClick = () => {
-    debugger;
     try {
       navigator.geolocation.getCurrentPosition(async (position) => {
-        setLatitude(position.coords.latitude);
-        setLongitude(position.coords.longitude);
+        dispatch(updateLat(position.coords.latitude));
+        dispatch(updateLong(position.coords.longitude));
       });
       setAddress("My Location");
     } catch (error) {
       console.log(error);
     }
   };
-
+  const searchOptions = {
+    location: (-34, 151),
+    radius: 2000,
+  };
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
     const latLng = await getLatLng(results[0]);
 
     setAddress(value);
-    setLatitude(latLng.lat);
-    setLongitude(latLng.lng);
+    dispatch(updateLat(latLng.lat));
+    dispatch(updateLong(latLng.lng));
   };
   console.log(select);
 
@@ -75,6 +80,7 @@ const LocationSearch = ({ setLatitude, setLongitude }) => {
         value={address}
         onChange={setAddress}
         onSelect={handleSelect}
+        // searchOptions={searchOptions}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div id="searchDiv">

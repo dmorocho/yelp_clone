@@ -3,7 +3,7 @@ import "./App.css";
 import NavBar from "./features/NavBar";
 import Home from "./features/Home/Home";
 import SignUp from "./features//Signup/SignUp";
-import Search from "./features/searchPage";
+import ResultsPage from "./features/Results/ResultsPage";
 import Login from "./features/Login";
 import Resturantpage from "./features/Resturantpage";
 import Reviewpage from "./features/review/ReviewPage";
@@ -25,7 +25,7 @@ function App() {
             <SignUp />
           </AuthRoute>
           <Route path={"/search/:term"}>
-            <Search />
+            <ResultsPage />
           </Route>
           <Route exact path={"/"}>
             {/* <AuthRoute exact path={"/"}> */}

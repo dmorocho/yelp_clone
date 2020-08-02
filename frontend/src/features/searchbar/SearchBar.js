@@ -244,13 +244,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import LocationSearch from "./LocationSearch";
+import { apiURL } from "../../util/apiURL";
+import { searchBiz } from "../resturants/resturantSlice";
 // import { receiveSearch } from "../SearchBar/SearchBarSlice";
 import "./SearchBar.css";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { Paper, InputBase, Divider, IconButton } from "@material-ui/core";
+import { useDispatch, useSelector } from "react-redux";
 
 import SearchIcon from "@material-ui/icons/Search";
 
@@ -276,51 +278,60 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 // const API_KEY = process.env.REACT_APP_API_KEY;
-const API_KEY =
-  "8qnMAZ-CZ90tKgmGIL0GXzVK-teEHMAmfu0f-NlSKYgA-dSxs5WzkUz5DEu293l2ccgEUx9VMFEB3rMRMGXh0d7uU2cuybWSC91zVpq7-1l7Zq8LXBzoMVe9L8XvXnYx";
 
 const SearchBar = () => {
   const classes = useStyles();
   const [location, setLocation] = useState("");
   const [term, setTerm] = useState("");
+  const [liveSearchRes, setliveSeachRes] = useState("");
+
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
+  const API = apiURL();
+
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const locationURL = () => {
-    if (location) {
-      return `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}&limit=50&sort_by=distance`;
-    } else {
-      return `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&latitude=${latitude}&longitude=${longitude}&limit=50&sort_by=distance`;
-    }
-  };
+  // const locationURL = () => {
+  //   if (location) {
+  //     return `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}&limit=50&sort_by=distance`;
+  //   } else {
+  //     return `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&latitude=${latitude}&longitude=${longitude}&limit=50&sort_by=distance`;
+  //   }
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const url = locationURL();
-    const config = {
-      method: "get",
-      url: url,
-      headers: {
-        Authorization: `Bearer ${API_KEY}`,
-      },
-    };
+    dispatch(searchBiz(term));
+    history.push(`/search/${term}`);
+    // };
 
-    try {
-      let res = await axios(config);
-      debugger;
-      // dispatch(receiveSearch(res.data.businesses));
-      debugger;
-      history.push("/ItinResPage");
-    } catch (error) {
-      console.log(error);
-    }
+    // try {
+    //   let res = await axios(config);
+    //   debugger;
+    // dispatch(receiveSearch(res.data.businesses));
+    //   debugger;
+    //   history.push("/ItinResPage");
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
-
+  const liveSearch = async () => {
+    let res = await axios.get(`${API}/api/businesses/search/${term}`);
+    setliveSeachRes(res.data.payload);
+  };
   return (
     <>
       <Paper component="form" className={classes.root} onSubmit={handleSubmit}>
+        <Typography
+          component="small"
+          variant="small"
+          align="baseline"
+          color="primary"
+          margin="none"
+        >
+          Find
+        </Typography>
         <InputBase
           onChange={(e) => setTerm(e.currentTarget.value)}
           value={term}
@@ -329,8 +340,33 @@ const SearchBar = () => {
           variant="outlined"
           // fullWidth="false"
           autoFocus="true"
+          onKeyUp={liveSearch}
         />
+        <div className="dropdown-content">
+          <ul>
+            {liveSearchRes
+              ? liveSearchRes.map((biz) => {
+                  return (
+                    <a href={`/Resturantpage/${biz.id}`}>
+                      <li role="option" id={biz.id} key={biz.id}>
+                        {biz.name}
+                      </li>
+                    </a>
+                  );
+                })
+              : null}
+          </ul>
+        </div>
         <Divider className={classes.divider} orientation="vertical" />
+        <Typography
+          component="small"
+          variant="small"
+          align="baseline"
+          color="primary"
+          margin="none"
+        >
+          Near
+        </Typography>
         <LocationSearch setLatitude={setLatitude} setLongitude={setLongitude} />
         <Divider className={classes.divider} orientation="vertical" />
 
@@ -341,15 +377,6 @@ const SearchBar = () => {
           onClick={handleSubmit}
         >
           <SearchIcon />
-          <Typography
-            component="small"
-            variant="small"
-            align="baseline"
-            color="primary"
-            margin="none"
-          >
-            Search
-          </Typography>
         </IconButton>
       </Paper>
     </>
