@@ -6,15 +6,13 @@ export const LocationSlice = createSlice({
     latitude: 0,
     longitude: 0,
   },
-  updateLat: {
-    reducer: (state, action) => {
-      state.latitude = action.payload;
-    },
+  updateLat: (state, action) => {
+    state.latitude = action.payload;
+    return state;
   },
-  updateLong: {
-    reducer: (state, action) => {
-      state.push(action.payload);
-    },
+  updateLong: (state, action) => {
+    state.longitude = action.payload;
+    return state;
   },
 });
 

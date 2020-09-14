@@ -2,17 +2,29 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { login } from "../util/firebaseFunctions";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { addUser } from "./UserSlice";
+import { apiURL } from "../util/apiURL";
 
 const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState(null);
+  const dispatch = useDispatch();
   const history = useHistory();
+  const API = apiURL();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await login(email, password);
+      let res = await login(email, password);
+      let user = await axios({
+        method: "get",
+        url: `${API}/api/users/${res.user.uid}`,
+      });
+
+      dispatch(addUser(user.data.users[0]));
+      debugger;
       history.push("/");
     } catch (error) {
       setError(error.code.split("/")[1].replace("-", " ").replace("-", " "));

@@ -69,13 +69,24 @@ body {
       "right right right right right right"
       "footer footer footer footer footer footer";
   }
+  .left {
+    background-color: #aaa;
+    /* width: 500px; */
+    height: 120px;
+    /* display: flex;
+    flex-direction: row; */
+  }
 }
 
 .left {
   background-color: #aaa;
+  width: 200px;
 }
 .middle {
   background-color: #bbb;
+  height: 500px;
+  overflow: scroll;
+  width: 550px;
 }
 .right {
   background-color: #ccc;

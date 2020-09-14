@@ -14,6 +14,7 @@ import UserAuthBtns from "../UserAuthBtns/UserAuthBtns";
 import { AuthContext } from "../../providers/AuthContext";
 
 import "./Home.css";
+import { NavLink } from "react-router-dom";
 
 let num = [img1, img2, img3];
 
@@ -44,18 +45,24 @@ const Home = () => {
           <SearchBar />
 
           <ul id="sub">
-            <li>
-              <img alt="deliver " id="deliveryIcon" src={deliveryIcon}></img>
-              Delivery
-            </li>
-            <li>
-              <img alt="deliver " id="deliveryIcon" src={deliveryIcon}></img>
-              Resturants
-            </li>
-            <li>
-              <img alt="deliver " id="deliveryIcon" src={deliveryIcon}></img>
-              Bars
-            </li>
+            <NavLink to={"/search/cafe"}>
+              <li>
+                <img alt="deliver " id="deliveryIcon" src={deliveryIcon}></img>
+                Cafe
+              </li>
+            </NavLink>
+            <NavLink to={"/search/Resturant"}>
+              <li>
+                <img alt="deliver " id="deliveryIcon" src={deliveryIcon}></img>
+                Resturants
+              </li>
+            </NavLink>
+            <NavLink to={"/search/Burger"}>
+              <li>
+                <img alt="deliver " id="deliveryIcon" src={deliveryIcon}></img>
+                Bars
+              </li>
+            </NavLink>
           </ul>
         </div>
       </div>

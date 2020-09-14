@@ -2,14 +2,16 @@ import React from "react";
 import { useContext } from "react";
 
 import { logout } from "../../util/firebaseFunctions";
-
 import { AuthContext } from "../../providers/AuthContext";
 import { NavLink } from "react-router-dom";
 import mystyle from "./UserAuthBtns.css";
+import { useSelector } from "react-redux";
+import { selectUser } from "../UserSlice";
 
 const UserAuthBtns = () => {
+  const user = useSelector(selectUser);
   const { currentUser } = useContext(AuthContext);
-
+  debugger;
   const displayButtons = () => {
     if (currentUser) {
       return (

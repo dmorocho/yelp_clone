@@ -61,18 +61,17 @@ const LocationSearch = () => {
     }
   };
   const searchOptions = {
-    location: (-34, 151),
-    radius: 2000,
+    location: (40.7549, 40.7549),
+    radius: 20,
   };
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
     const latLng = await getLatLng(results[0]);
-
+    debugger;
     setAddress(value);
     dispatch(updateLat(latLng.lat));
     dispatch(updateLong(latLng.lng));
   };
-  console.log(select);
 
   return (
     <>

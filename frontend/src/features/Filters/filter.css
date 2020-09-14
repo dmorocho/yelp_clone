@@ -3,3 +3,13 @@
   font-size: 12px;
   display: "flex";
 }
+
+@media (max-width: 600px) {
+  #filter_form {
+    width: fit-content;
+    font-size: 10px;
+    display: "flex";
+    flex-direction: row;
+    height: 100px;
+  }
+}

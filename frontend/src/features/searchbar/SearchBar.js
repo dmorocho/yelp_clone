@@ -292,29 +292,10 @@ const SearchBar = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  // const locationURL = () => {
-  //   if (location) {
-  //     return `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}&limit=50&sort_by=distance`;
-  //   } else {
-  //     return `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&latitude=${latitude}&longitude=${longitude}&limit=50&sort_by=distance`;
-  //   }
-  // };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(searchBiz(term));
     history.push(`/search/${term}`);
-    // };
-
-    // try {
-    //   let res = await axios(config);
-    //   debugger;
-    // dispatch(receiveSearch(res.data.businesses));
-    //   debugger;
-    //   history.push("/ItinResPage");
-    // } catch (error) {
-    //   console.log(error);
-    // }
   };
   const liveSearch = async () => {
     let res = await axios.get(`${API}/api/businesses/search/${term}`);
@@ -342,7 +323,7 @@ const SearchBar = () => {
           autoFocus="true"
           onKeyUp={liveSearch}
         />
-        <div className="dropdown-content">
+        {/* <div className="dropdown-content">
           <ul>
             {liveSearchRes
               ? liveSearchRes.map((biz) => {
@@ -356,7 +337,7 @@ const SearchBar = () => {
                 })
               : null}
           </ul>
-        </div>
+        </div> */}
         <Divider className={classes.divider} orientation="vertical" />
         <Typography
           component="small"

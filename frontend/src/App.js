@@ -5,7 +5,7 @@ import Home from "./features/Home/Home";
 import SignUp from "./features//Signup/SignUp";
 import ResultsPage from "./features/Results/ResultsPage";
 import Login from "./features/Login";
-import Resturantpage from "./features/Resturantpage";
+import Resturantpage from "./features/category/ResturantPage/Resturantpage";
 import Reviewpage from "./features/review/ReviewPage";
 
 import { Route, Switch } from "react-router-dom";

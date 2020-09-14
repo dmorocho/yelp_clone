@@ -3,20 +3,13 @@ import { RadioGroup, FormGroup, Checkbox } from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
 import "./filter.css";
-const Filters = () => {
+const Filters = ({ value, handleValueChange }) => {
   const [distance, setDistance] = useState("");
-  const [value, setValue] = useState({
-    $: false,
-    $$: false,
-    $$$: false,
-  });
 
   const handleChange = (event) => {
     setDistance(event.target.value);
   };
-  const handleValueChange = (event) => {
-    setValue({ ...value, [event.target.name]: event.target.checked });
-  };
+
   console.log({ Value: value, distance });
 
   return (
@@ -54,11 +47,12 @@ const Filters = () => {
           label="$$$"
         />
       </FormGroup>
-      <h2>Distance</h2>
+
+      {/* <h2>Distance</h2>
       <RadioGroup
         aria-label="Distance"
         name="distance"
-        value={value}
+        value={distance}
         onChange={handleChange}
       >
         <FormControlLabel
@@ -81,7 +75,7 @@ const Filters = () => {
           control={<Radio />}
           label="Within 4 blocks"
         />
-      </RadioGroup>
+      </RadioGroup> */}
     </form>
   );
 };

@@ -49,11 +49,21 @@ img {
   display: "block";
   max-width: "100%";
   max-height: "100%";
-  width: "128px";
-  height: "128px";
+  /* width: 256;
+  height: 144; */
 }
 
-,
+.biz-card {
+  color: none;
+  text-decoration: none;
+}
+.biz-card:visited {
+  color: none;
+  text-decoration: none;
+}
+.biz-card:hover {
+  background-color: lightgreen;
+}
 
 /* div.polaroid {
   width: 80%;
