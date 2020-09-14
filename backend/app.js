@@ -5,7 +5,7 @@ require("dotenv").config();
 const userRouter = require("./routes/users");
 const reviewsRouter = require("./routes/reviews");
 const businessesRouter = require("./routes/businesses/businesses");
-// const businessesRouter = require("./routes/businesses/reviews");
+const hoursRouter = require("./routes/hours");
 
 const PORT = process.env.PORT;
 
@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.use("/api/users", userRouter);
 app.use("/api/reviews", reviewsRouter);
 app.use("/api/businesses", businessesRouter);
-// app.use("/api/businesses/reviews/:id");
+app.use("/api/hours", hoursRouter);
 
 app.use((err, req, res, next) => {
   console.log(err);
