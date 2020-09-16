@@ -1,5 +1,5 @@
 -- DROP DATABASE IF EXISTS yelp_db;
-CREATE DATABASE yelp_db;
+-- CREATE DATABASE yelp_db;
 
 -- \c yelp_db;
 
