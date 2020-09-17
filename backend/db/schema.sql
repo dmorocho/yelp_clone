@@ -1,13 +1,13 @@
--- DROP DATABASE IF EXISTS yelp_db;
--- CREATE DATABASE yelp_db;
+DROP DATABASE IF EXISTS yelp_db;
+CREATE DATABASE yelp_db;
 
--- \c yelp_db;
+\c yelp_db;
 
--- DROP TABLE IF EXISTS users;
--- DROP TABLE IF EXISTS businesses;
--- DROP TABLE IF EXISTS reviews;
--- DROP TABLE IF EXISTS features;
--- DROP TABLE IF EXISTS operations;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS businesses;
+DROP TABLE IF EXISTS reviews;
+DROP TABLE IF EXISTS features;
+DROP TABLE IF EXISTS operations;
 
 
 
