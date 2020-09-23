@@ -17,16 +17,16 @@ const Login = () => {
         </div>
       </header>
       <div id="mid_div">
-        <div id="signup_div">
-          <h3>Sign in to Yelp</h3>
-          <p>
-            New to Yelp? <a href="./signup">Sign up</a>
-          </p>
+        <div style={{ margin: 10, alignItems: "center" }} id="signup_div">
+          <h3 style={{ color: "#D32323", fontWeight: "bold", margin: 5 }}>
+            Login to Yelp
+          </h3>
+
           <p>
             By logging in, you agree to Yelp’s Terms of Service and Privacy
             Policy.
           </p>
-          <LoginForm />
+          <LoginForm style={{ padding: 5 }} />
         </div>
         <div>
           <img alt="signup" src={signup_image}></img>

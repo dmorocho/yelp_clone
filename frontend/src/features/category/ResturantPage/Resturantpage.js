@@ -44,7 +44,12 @@ const Resturantpage = () => {
   }, []);
 
   const handleReviewBtnClick = (e) => {
-    history.push(`/review/${currentRes.id}`);
+    debugger;
+    if (user) {
+      history.push(`/review/${currentRes.id}`);
+    } else {
+      history.push(`/review/${currentRes.id}`);
+    }
   };
   return (
     <div class="res-page-grid-container">
